@@ -260,7 +260,7 @@ def addDevicesbySerial(networkID, devices, auth):
     for device in devices:
         serial = devices[device]['serial_no']
                   
-        print("Adding device " +  device'device_name'] + " to the network")
+        print("Adding device " +  device['device_name'] + " to the network")
 
 
         payload = "{\n    \"serials\": [\n        \"" + serial + "\"\n    ]\n}"
