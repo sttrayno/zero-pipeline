@@ -29,4 +29,4 @@ jobs:
     - name: Run pipeline
       run: |
         pwd
-        ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }}${{ secrets.ipamauth }}
+        sudo ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }}${{ secrets.ipamauth }}
