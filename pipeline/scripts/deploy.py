@@ -21,8 +21,10 @@ def main(auth, org, ipamauth, dirName):
             print("Attemping to create branch: " + entry)
  
             devices = parseDevices(fullPath)
+            print(devices)
             network = parseNetwork(fullPath)
-
+            print(network)
+            
             networkID = createNetwork(network, auth)
 
             addDevicesbySerial(networkID, devices, auth)
