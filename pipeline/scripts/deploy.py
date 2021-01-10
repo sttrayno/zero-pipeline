@@ -84,7 +84,7 @@ def parseNetwork(fullPath):
     with open(fullPath + "/network.yaml") as file:
         # The FullLoader parameter handles the conversion from YAML
         # scalar values to Python the dictionary format
-        network = yaml.load(file, Loader=yaml.FullLoader)
+        network = yaml.safe_load(file)
 
 
     return network
