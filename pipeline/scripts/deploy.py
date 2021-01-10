@@ -306,9 +306,7 @@ def getVLANfromTemplate(template_name):
     return vlanList
 
 
-if len(sys.argv) !=4:
-else:
-    auth=sys.argv[1]
-    org=sys.argv[2]
-    ipamauth=sys.argv[3]
-    main(auth, org, ipamauth, './network/branches')
+auth=sys.argv[1]
+org=sys.argv[2]
+ipamauth=sys.argv[3]
+main(auth, org, ipamauth, './network/branches')
