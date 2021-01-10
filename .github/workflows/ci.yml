@@ -8,7 +8,7 @@ on:
     branches: 
       - main
     paths:
-      - 'network/branches/**'
+      - 'network/branches/*'
 
 
 jobs:
@@ -28,5 +28,5 @@ jobs:
         if [ -f ./pipeline/scripts/requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run pipeline
       run: |
-        ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }}${{ secrets.ipamauth }}
         pwd
+        ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }}${{ secrets.ipamauth }}
