@@ -74,8 +74,7 @@ def parseDevices(fullPath):
     with open(fullPath + "/devices.yaml") as file:
         # The FullLoader parameter handles the conversion from YAML
         # scalar values to Python the dictionary format
-        network = yaml.safe_load(file)
-
+        devices = yaml.safe_load(file)
 
     return devices
 
