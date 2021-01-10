@@ -1,8 +1,8 @@
 ---
  device-1:
-    address: 310 St Vincents Street, Glasgow
-    device_name: 1001_mx1
+    address: 22 St Vincents Street, Glasgow
+    device_name: 2001_mx1
     device_type: MX64
-    serial_no: Q2BN-TXYH-KJLU
+    serial_no: Q2BN-HN5M-CKFJ
     dns_server1: 208.67.222.222
     dns_server2: 208.67.220.220
