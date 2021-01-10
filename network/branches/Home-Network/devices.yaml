@@ -1,0 +1,15 @@
+---
+ device-1:
+    address: 28 Avondale Grove, East Kilbride
+    device_name: Home-MX68
+    device_type: MX68
+    serial_no: Q2KY-FNZB-5LS2
+    dns_server1: 208.67.222.222
+    dns_server2: 208.67.220.220
+ device-2:
+    address: 28 Avondale Grove, East Kilbride
+    device_name: Home-MR36
+    device_type: MR36
+    serial_no: Q3AJ-TWY6-FEVG
+    dns_server1: 208.67.222.222
+    dns_server2: 208.67.220.220
