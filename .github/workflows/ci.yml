@@ -26,7 +26,8 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip
         if [ -f ./pipeline/scripts/requirements.txt ]; then pip3 install -r ./pipeline/scripts/requirements.txt; fi
+        pip3 list
     - name: Run pipeline
       run: |
-        pwd
+        pip3 list
         sudo python3 ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }}${{ secrets.ipamauth }}
