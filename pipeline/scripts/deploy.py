@@ -20,12 +20,9 @@ def main(auth, org, ipamauth, dirName):
 
         # If entry is a directory then get the list of files in this directory 
         if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml"):
-          
+ 
             devices = parseDevices(fullPath)
             network = parseNetwork(fullPath)
-
-            
-
 
             networkID = createNetwork(network, auth)
 
@@ -36,7 +33,6 @@ def main(auth, org, ipamauth, dirName):
             bindTemplate(networkID, network, auth, org)
 
             vlanList = getVLANfromTemplate(network['template_name'])
-
 
             for vlan in vlanList:
                 updateVLANfromIPAM(network, ipamauth, auth, networkID, vlan)
