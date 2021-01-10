@@ -273,7 +273,7 @@ def addDevicesbySerial(networkID, devices, auth):
 
         response = requests.request("POST", url, headers=headers, data = payload)
 
-        return None
+    return None
 
 def getVLANfromTemplate(template_name):
 
