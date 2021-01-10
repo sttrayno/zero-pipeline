@@ -18,6 +18,7 @@ def main(auth, org, ipamauth, dirName):
         fullPath = os.path.join(dirName, entry)
         # If entry is a directory then get the list of files in this directory 
         if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml"):
+            print("Attemping to create branch: " + entry
  
             devices = parseDevices(fullPath)
             network = parseNetwork(fullPath)
@@ -258,6 +259,8 @@ def addDevicesbySerial(networkID, devices, auth):
     
     for device in devices:
         serial = devices[device]['serial_no']
+                  
+        print("Adding device device" +['device_name'] + " to the network")
 
 
         payload = "{\n    \"serials\": [\n        \"" + serial + "\"\n    ]\n}"
