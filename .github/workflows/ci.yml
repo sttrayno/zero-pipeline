@@ -30,4 +30,4 @@ jobs:
     - name: Run pipeline
       run: |
         pip3 list
-        sudo python3 ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }}${{ secrets.ipamauth }}
+        sudo python3 ./pipeline/scripts/deploy.py ${{ secrets.auth }} ${{ secrets.org }} ${{ secrets.ipamauth }}
