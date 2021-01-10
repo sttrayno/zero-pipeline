@@ -1,7 +1,7 @@
 ---
  device-1:
     address: 1086 Argyle Street, Glasgow
-    device_name: 2002_ms1
+    device_name: 2002_ms
     device_type: MS22
     serial_no: Q2AP-TTUA-ZYKG
     dns_server1: 208.67.222.222
