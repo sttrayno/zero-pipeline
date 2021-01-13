@@ -132,7 +132,8 @@ def bindTemplate(networkID, network, auth, org):
     for template in templates:
         if template['name'] == network['template_name']:
             templateID = template['id']
-
+            print(templateID)
+    
 
     url = "https://api-mp.meraki.com/api/v1/networks/"+ networkID +"/bind"
 
@@ -143,6 +144,7 @@ def bindTemplate(networkID, network, auth, org):
     }
 
     response = requests.request("POST", url, headers=headers, data = payload)
+    print(response.text)
         
     return None
 
