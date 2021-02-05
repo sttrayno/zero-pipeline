@@ -113,7 +113,8 @@ def updateDevices(devices, network, auth):
         response = requests.request("PUT", url, headers=headers, data = payload)
         print("updating device: " + deviceName)
         print(response.text)
-        return None
+    
+    return None
 
 def bindTemplate(networkID, network, auth, org):
 
