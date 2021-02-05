@@ -103,7 +103,7 @@ def createNetwork(network, auth, cameraNetwork):
         
         response = requests.request("POST", url, headers=headers, data = payload)
         parsed_json = (json.loads(response.text.encode('utf8')))
-        networkID = parsed_json['id']
+        cameranetworkID = parsed_json['id']
 
         return cameranetworkID
         
