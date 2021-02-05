@@ -17,7 +17,28 @@ def main(auth, org, ipamauth, dirName):
         # Create full path
         fullPath = os.path.join(dirName, entry)
         # If entry is a directory then get the list of files in this directory 
-        if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml"):
+        if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml") and os.path.isfile(fullPath + "/cameras.yaml")):
+            print("Attemping to create branch: " + entry)
+ 
+            devices = parseDevices(fullPath)
+            print(devices)
+        
+            network = parseNetwork(fullPath)
+            print(network)
+            
+            cameras = parseCameras(fullPath)
+            print(cameras)
+
+            networkID = createNetwork(network, auth)
+            
+            addDevicesbySerial(networkID, devices, auth)
+
+            updateDevices(devices, network, auth)
+
+            bindTemplate(networkID, network, auth, org)
+
+            vlanList = getVLANfromTemplate(network['template_name'])
+         elif os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml"):
             print("Attemping to create branch: " + entry)
  
             devices = parseDevices(fullPath)
@@ -90,6 +111,16 @@ def parseNetwork(fullPath):
 
 
     return network
+
+def parseCameras(fullPath):
+
+    with open(fullPath + "/cameras.yaml") as file:
+        # The FullLoader parameter handles the conversion from YAML
+        # scalar values to Python the dictionary format
+        cameras = yaml.safe_load(file)
+
+
+    return cameras
 
 ##### Need to implement yaml linting on artifacts
 
