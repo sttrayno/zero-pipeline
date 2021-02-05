@@ -30,9 +30,13 @@ def main(auth, org, ipamauth, dirName):
             cameras = parseCameras(fullPath)
             print(cameras)
 
-            networkID = createNetwork(network, auth, True)
+            cameranetworkID = createNetwork(network, auth, True)
+            
+            networkID = createNetwork(network, auth, False)
             
             addDevicesbySerial(networkID, devices, auth)
+
+            addDevicesbySerial(cameranetworkID, cameras, auth)
 
             updateDevices(devices, network, auth)
 
@@ -66,6 +70,43 @@ def main(auth, org, ipamauth, dirName):
                 updateVLANfromIPAM(network, ipamauth, auth, networkID, vlan)
 
 def createNetwork(network, auth, cameraNetwork):
+    
+    if cameraNetwork == True:
+        
+        cameraNetworkName = network['network_name'] + "_Cameras"
+        
+        url = "https://api-mp.meraki.com/api/v1/organizations/" + org + "/networks"
+
+        headers = {
+        'Accept': '*/*',
+        'X-Cisco-Meraki-API-Key': auth
+        }
+
+        payload ={}
+
+        response = requests.request("GET", url, headers=headers, data=payload)
+
+        existingnetworks = json.loads(response.text.encode('utf8'))
+
+        for existingnetwork in existingnetworks:
+            if existingnetwork['name'] == cameraNetworkName:
+                cameranetworkID = existingnetwork['id']
+                return cameranetworkID
+
+        url = "https://api-mp.meraki.com/api/v1/organizations/" + org + "/networks"
+
+        payload = "{\n    \"name\": \""+ cameraNetworkName +"\",\n    \"productTypes\": [\n        \"camera\"],\n    \"timeZone\": \"" + network['timezone'] + "\"\n}"
+        headers = {
+          'Content-Type': 'application/json',
+          'X-Cisco-Meraki-API-Key': auth
+        }
+        
+        response = requests.request("POST", url, headers=headers, data = payload)
+        parsed_json = (json.loads(response.text.encode('utf8')))
+        networkID = parsed_json['id']
+
+        return cameranetworkID
+        
 
     url = "https://api-mp.meraki.com/api/v1/organizations/" + org + "/networks"
 
