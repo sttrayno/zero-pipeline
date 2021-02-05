@@ -30,7 +30,7 @@ def main(auth, org, ipamauth, dirName):
             cameras = parseCameras(fullPath)
             print(cameras)
 
-            networkID = createNetwork(network, auth)
+            networkID = createNetwork(network, auth, True)
             
             addDevicesbySerial(networkID, devices, auth)
 
@@ -52,7 +52,7 @@ def main(auth, org, ipamauth, dirName):
             network = parseNetwork(fullPath)
             print(network)
             
-            networkID = createNetwork(network, auth)
+            networkID = createNetwork(network, auth, False)
 
             addDevicesbySerial(networkID, devices, auth)
 
@@ -65,7 +65,7 @@ def main(auth, org, ipamauth, dirName):
             for vlan in vlanList:
                 updateVLANfromIPAM(network, ipamauth, auth, networkID, vlan)
 
-def createNetwork(network, auth):
+def createNetwork(network, auth, cameraNetwork):
 
     url = "https://api-mp.meraki.com/api/v1/organizations/" + org + "/networks"
 
@@ -86,7 +86,7 @@ def createNetwork(network, auth):
             return networkID
 
     url = "https://api-mp.meraki.com/api/v1/organizations/" + org + "/networks"
-
+    
     payload = "{\n    \"name\": \""+ network['network_name'] +"\",\n    \"productTypes\": [\n        \"appliance\",\n        \"switch\",\n        \"wireless\"\n    ],\n    \"timeZone\": \"" + network['timezone'] + "\"\n}"
     headers = {
       'Content-Type': 'application/json',
