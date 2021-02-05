@@ -18,6 +18,7 @@ def main(auth, org, ipamauth, dirName):
         fullPath = os.path.join(dirName, entry)
         # If entry is a directory then get the list of files in this directory 
         if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml") and os.path.isfile(fullPath + "/cameras.yaml"):
+            
             print("Attemping to create branch: " + entry)
  
             devices = parseDevices(fullPath)
@@ -38,7 +39,12 @@ def main(auth, org, ipamauth, dirName):
             bindTemplate(networkID, network, auth, org)
 
             vlanList = getVLANfromTemplate(network['template_name'])
-         elif os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml"):
+            
+            for vlan in vlanList:
+                updateVLANfromIPAM(network, ipamauth, auth, networkID, vlan)
+            
+        elif os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml"):
+            
             print("Attemping to create branch: " + entry)
  
             devices = parseDevices(fullPath)
