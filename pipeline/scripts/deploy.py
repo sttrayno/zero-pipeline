@@ -17,7 +17,7 @@ def main(auth, org, ipamauth, dirName):
         # Create full path
         fullPath = os.path.join(dirName, entry)
         # If entry is a directory then get the list of files in this directory 
-        if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml") and os.path.isfile(fullPath + "/cameras.yaml")):
+        if os.path.isdir(fullPath) and os.path.isfile(fullPath + "/network.yaml") and os.path.isfile(fullPath + "/devices.yaml") and os.path.isfile(fullPath + "/cameras.yaml"):
             print("Attemping to create branch: " + entry)
  
             devices = parseDevices(fullPath)
