@@ -1,7 +1,7 @@
 ---
  device-1:
     address: Mission Beach, San Diego, California
-    device_name: 2001_mx
+    device_name: 2001_mx1
     device_type: MX64
     serial_no: Q2BN-HN5M-CKFJ
     dns_server1: 208.67.222.222
