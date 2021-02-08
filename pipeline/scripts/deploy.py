@@ -130,12 +130,12 @@ def createNetwork(network, auth, cameraNetwork):
     payload = {
         "name": network['network_name'],
         "timeZone": network['timezone'],
-        "tags": network['network_name'],
         "productTypes":[
-        "appliance",
-        "switch",
-        "wireless"
-        ]
+            "appliance",
+            "switch",
+            "wireless"
+        ],
+        "tags": network['network_name']
        }
     print(payload)
     headers = {
