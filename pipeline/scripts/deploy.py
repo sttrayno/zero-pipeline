@@ -128,7 +128,7 @@ def createNetwork(network, auth, cameraNetwork):
 
     url = "https://api-mp.meraki.com/api/v1/organizations/" + org + "/networks"
     
-    payload = "{\n    \"name\": \""+ network['network_name'] +"\",\n    \"productTypes\": [\n        \"appliance\",\n        \"switch\",\n        \"wireless\"\n    ],\n    \"timeZone\": \"" + network['timezone']+"\",\n    \"tags": + network['network_name'] + "\r\n}"
+    payload = "{\n    \"name\": \""+ network['network_name'] +"\",\n    \"productTypes\": [\n        \"appliance\",\n        \"switch\",\n        \"wireless\"\n    ],\n    \"timeZone\": \"" + network['timezone']+"\",\n    \"tags:" + network['network_name']+ "}"
     print(payload)
     headers = {
       'Content-Type': 'application/json',
