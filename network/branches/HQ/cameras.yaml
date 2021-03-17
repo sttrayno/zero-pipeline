@@ -1,7 +1,7 @@
 ---
  device-1:
     address: 28 Avondale Grove
-    device_name: HQ-Camera-1
+    device_name: HQ-Camera-01
     device_type: MV12
     serial_no: Q2FV-K3LW-9SAJ
     dns_server1: 208.67.222.222
