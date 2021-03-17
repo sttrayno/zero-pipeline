@@ -207,7 +207,9 @@ def bindTemplate(networkID, network, auth, org):
 
     response = requests.request("GET", url, headers=headers, data=payload)
 
-    templates = (json.loads(response.text.encode('utf8')))
+    print(response.text)
+    
+    templates = (json.loads(response.text))
    
     for template in templates:
         if template['name'] == network['template_name']:
