@@ -208,7 +208,7 @@ def bindTemplate(networkID, network, auth, org):
     response = requests.request("GET", url, headers=headers, data=payload)
 
     print(response.text)
-    print("printing templates"
+    print("printing templates")
     
     templates = (json.loads(response.text))
    
