@@ -202,13 +202,14 @@ def bindTemplate(networkID, network, auth, org):
     payload={}
     headers = {
     'Accept': '*/*',
-    'X-Cisco-Meraki-API-Key': '6a572db444bffb6bbf5cd68011e745f217e36121'
+    'X-Cisco-Meraki-API-Key': auth
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
 
     print(response.text)
     print("printing templates")
+    print(response)
     
     templates = (json.loads(response.text))
    
